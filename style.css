@@ -8,7 +8,7 @@
     --secondary: #888;
     --alert-error: #ff5252;
     --alert-success: #4CAF50;
-    --alert-warning: #FF9800;
+    --alert-warning: #FFB02E;
     --shadow-dark: rgba(0, 0, 0, 0.6);
 }
 
@@ -23,10 +23,12 @@
 body {
     background-color: var(--bg-dark);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     padding: 24px;
+    gap: 32px;
     color: var(--text-color);
     overflow: hidden;
     position: relative;
@@ -47,12 +49,45 @@ body {
     to { opacity: 0.5; transform: scale(1.02); }
 }
 
+/* === Header (Emoji, Título e Descrição) === */
+.header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.gift-animation {
+    font-size: 48px;
+    display: inline-block;
+    animation: bounce 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--highlight);
+    margin-top: 8px;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-top: 4px;
+}
+
 /* === Container Principal === */
 .container {
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-card);
     width: 100%;
-    max-width: 448px;
-    padding: 48px;
+    max-width: 504px;
+    padding: 32px;
     border-radius: 16px;
     text-align: center;
     box-shadow: 0px 8px 20px var(--shadow-dark);
@@ -69,32 +104,22 @@ body {
         padding: 4px;
     }
 
-    h1, .input-section, #listaAmigos, .button-group, #resultado {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
+    .header {
+        margin-bottom: 8px;
     }
-}
-
-/* === Título === */
-.title {
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--highlight);
-    margin-bottom: 24px;
 }
 
 /* === Input e Botão Adicionar === */
 .input-section h2 {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .input-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
 input {
@@ -131,19 +156,7 @@ button {
     background-color: #777;
 }
 
-/* === Lista de amigos === */
-#listaAmigos {
-    margin: 16px 0;
-    list-style: none;
-}
-
-#listaAmigos li {
-    font-size: 16px;
-    padding: 8px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* === Botões de Sortear e Reiniciar === */
+/* === Botões === */
 .button-group {
     display: flex;
     flex-direction: column;
@@ -181,56 +194,89 @@ button {
     visibility: visible;
 }
 
+h2 {
+    margin-bottom: 16px;
+}
+
+/* === Lista de amigos melhorada === */
+#listaAmigos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 16px auto;
+    list-style: none;
+    padding: 0;
+    max-width: 448px;
+}
+
+#listaAmigos li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    transition: 0.3s ease;
+    justify-content: space-between;
+}
+
+#listaAmigos li .remove {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ff5252;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s ease;
+    padding: 8px 0;
+}
+
+#listaAmigos li .remove:hover {
+    color: #ff2727;
+}
+
 /* === Alertas === */
-#alert-container, #warning-alert-container {
+#alert-container {
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 20px;
+    right: 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     z-index: 999;
 }
 
+/* === Alertas no topo central === */
 #warning-alert-container {
-    left: 24px;
-    right: auto;
+    position: fixed;
+    top: -50px; /* Começa fora da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+    transition: top 0.5s ease-out;
 }
 
 .alert {
-    padding: 16px 24px;
+    background: #313131;
+    padding: 12px 20px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: white;
+    color: var(--alert-warning);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-    animation: fadeInOut 8s forwards;
+    text-align: center;
+    animation: slideDown 0.5s ease-out;
 }
 
-.alert.error { background: var(--alert-error); }
-.alert.success { background: var(--alert-success); }
-.alert.warning { background: var(--alert-warning); }
-
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translateX(10px); }
-    10% { opacity: 1; transform: translateX(0); }
-    90% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 0; transform: translateX(10px); }
-}
-
-/* === Estilo para o emoji animado abaixo do título === */
-.gift-animation {
-    font-size: 32px;
-    margin-bottom: 16px;
-    animation: bounce 1s infinite alternate ease-in-out;
-}
-
-/* === Animação do emoji 🎁 (efeito de pulo) === */
-@keyframes bounce {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-8px);
-    }
+/* Animação de descer do topo */
+@keyframes slideDown {
+    from { top: -50px; opacity: 0; }
+    to { top: 20px; opacity: 1; }
 }
