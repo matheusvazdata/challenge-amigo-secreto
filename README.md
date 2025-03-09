@@ -4,7 +4,7 @@
 
 ## 📷 Demonstração
 
-![Captura de Tela do Projeto](./assets/versao-mobile.png)  
+![Captura de Tela do Projeto](./assets/gif-challenge-mobile.gif)  
 ![Demonstração do Projeto](./assets/gif-challenge.gif)
 
 ## 🌍 Acesse o Projeto Online
@@ -42,11 +42,11 @@
 
 ## 🎲 Como Executar o Projeto Localmente
 
-1. Clone este repositório:
+1. Clone este repositório:<br>
    ```sh
    git clone https://github.com/matheusvazdata/challenge-amigo-secreto.git
 
-2. Navegue até a pasta do projeto:
+2. Navegue até a pasta do projeto: <br>
    ```sh
    cd challenge-amigo-secreto
 
