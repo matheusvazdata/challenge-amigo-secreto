@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Secreto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <main class="container">
+        <div class="gift-animation">🎁</div> <!-- Emoji animado abaixo do título -->
+        <h1 class="title">Amigo Secreto</h1>
+        <div class="input-section">
+            <h2>Adicione os amigos</h2>
+            <div class="input-group">
+                <input type="text" id="amigo" placeholder="Digite um nome">
+                <button id="adicionar" disabled>Adicionar</button>
+            </div>
+        </div>
+
+        <ul id="listaAmigos"></ul>
+
+        <div class="button-group">
+            <button id="sortear">🎲 Sortear</button>
+            <button id="reiniciar" class="hidden">↺ Reiniciar</button>
+        </div>
+
+        <p id="resultado"></p>
+    </main>
+
+    <div id="alert-container"></div>
+    <div id="warning-alert-container"></div>
+</body>
+</html>

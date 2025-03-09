@@ -1,0 +1,236 @@
+/* === Variáveis de Cores === */
+:root {
+    --bg-dark: #0D0D0D;
+    --bg-card: rgba(25, 25, 25, 0.95);
+    --border-color: #222;
+    --text-color: #E0E0E0;
+    --highlight: #4CAF50;
+    --secondary: #888;
+    --alert-error: #ff5252;
+    --alert-success: #4CAF50;
+    --alert-warning: #FF9800;
+    --shadow-dark: rgba(0, 0, 0, 0.6);
+}
+
+/* === Reset Geral === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 24px;
+    color: var(--text-color);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === Animação de fundo === */
+.background-animation {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: pulse 5s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    from { opacity: 0.3; transform: scale(1); }
+    to { opacity: 0.5; transform: scale(1.02); }
+}
+
+/* === Container Principal === */
+.container {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 448px;
+    padding: 48px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0px 8px 20px var(--shadow-dark);
+}
+
+@media (max-width: 768px) {
+    body {
+        background-color: var(--bg-card);
+    }
+    .container {
+        background-color: transparent;
+        box-shadow: none;
+        max-width: none;
+        padding: 4px;
+    }
+
+    h1, .input-section, #listaAmigos, .button-group, #resultado {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* === Título === */
+.title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--highlight);
+    margin-bottom: 24px;
+}
+
+/* === Input e Botão Adicionar === */
+.input-section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: #1A1A1A;
+    color: var(--text-color);
+}
+
+button {
+    padding: 12px 16px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#adicionar {
+    background-color: var(--secondary);
+    color: white;
+}
+
+#adicionar:disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+#adicionar:not(:disabled):hover {
+    background-color: #777;
+}
+
+/* === Lista de amigos === */
+#listaAmigos {
+    margin: 16px 0;
+    list-style: none;
+}
+
+#listaAmigos li {
+    font-size: 16px;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* === Botões de Sortear e Reiniciar === */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#sortear {
+    background-color: var(--highlight);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#sortear:hover {
+    background-color: #388e3c;
+}
+
+#reiniciar {
+    background: none;
+    color: var(--text-color);
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    margin-bottom: 16px;
+}
+
+#reiniciar:hover {
+    color: var(--highlight);
+}
+
+#reiniciar.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* === Alertas === */
+#alert-container, #warning-alert-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 999;
+}
+
+#warning-alert-container {
+    left: 24px;
+    right: auto;
+}
+
+.alert {
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    animation: fadeInOut 8s forwards;
+}
+
+.alert.error { background: var(--alert-error); }
+.alert.success { background: var(--alert-success); }
+.alert.warning { background: var(--alert-warning); }
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(10px); }
+    10% { opacity: 1; transform: translateX(0); }
+    90% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(10px); }
+}
+
+/* === Estilo para o emoji animado abaixo do título === */
+.gift-animation {
+    font-size: 32px;
+    margin-bottom: 16px;
+    animation: bounce 1s infinite alternate ease-in-out;
+}
+
+/* === Animação do emoji 🎁 (efeito de pulo) === */
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-8px);
+    }
+}
