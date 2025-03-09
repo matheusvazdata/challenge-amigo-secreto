@@ -1,18 +1,20 @@
 /* === Variáveis de Cores === */
+/* Definindo as variáveis globais de cores do projeto */
 :root {
-    --bg-dark: #0D0D0D;
-    --bg-card: rgba(25, 25, 25, 0.95);
-    --border-color: #222;
-    --text-color: #E0E0E0;
-    --highlight: #4CAF50;
-    --secondary: #888;
-    --alert-error: #ff5252;
-    --alert-success: #4CAF50;
-    --alert-warning: #FFB02E;
-    --shadow-dark: rgba(0, 0, 0, 0.6);
+    --bg-dark: #0D0D0D; /* Cor de fundo principal */
+    --bg-card: rgba(25, 25, 25, 0.95); /* Cor do card */
+    --border-color: #222; /* Cor da borda dos elementos */
+    --text-color: #E0E0E0; /* Cor do texto principal */
+    --highlight: #4CAF50; /* Cor do destaque (botão sortear, título, etc.) */
+    --secondary: #888; /* Cor de botões secundários */
+    --alert-error: #ff5252; /* Cor do alerta de erro */
+    --alert-success: #4CAF50; /* Cor do alerta de sucesso */
+    --alert-warning: #FFB02E; /* Cor do alerta de aviso */
+    --shadow-dark: rgba(0, 0, 0, 0.6); /* Sombra dos elementos */
 }
 
 /* === Reset Geral === */
+/* Zera margens e paddings, define fonte padrão */
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +22,7 @@
     font-family: "Inter", sans-serif;
 }
 
+/* === Corpo da Página === */
 body {
     background-color: var(--bg-dark);
     display: flex;
@@ -34,7 +37,7 @@ body {
     position: relative;
 }
 
-/* === Animação de fundo === */
+/* === Animação de Fundo === */
 .background-animation {
     position: fixed;
     width: 100%;
@@ -49,7 +52,7 @@ body {
     to { opacity: 0.5; transform: scale(1.02); }
 }
 
-/* === Header (Emoji, Título e Descrição) === */
+/* === Cabeçalho (Emoji, Título e Descrição) === */
 .header {
     text-align: center;
     margin-bottom: 16px;
@@ -93,6 +96,7 @@ body {
     box-shadow: 0px 8px 20px var(--shadow-dark);
 }
 
+/* === Ajustes para Responsividade === */
 @media (max-width: 768px) {
     body {
         background-color: var(--bg-card);
@@ -109,7 +113,7 @@ body {
     }
 }
 
-/* === Input e Botão Adicionar === */
+/* === Seção de Entrada (Input e Botão Adicionar) === */
 .input-section h2 {
     font-size: 16px;
     font-weight: 600;
@@ -141,6 +145,7 @@ button {
     transition: 0.3s ease;
 }
 
+/* === Botão Adicionar === */
 #adicionar {
     background-color: var(--secondary);
     color: white;
@@ -156,7 +161,7 @@ button {
     background-color: #777;
 }
 
-/* === Botões === */
+/* === Botões de Sortear e Reiniciar === */
 .button-group {
     display: flex;
     flex-direction: column;
@@ -198,7 +203,7 @@ h2 {
     margin-bottom: 16px;
 }
 
-/* === Lista de amigos melhorada === */
+/* === Lista de Amigos Adicionados === */
 #listaAmigos {
     display: flex;
     flex-wrap: wrap;
@@ -239,7 +244,7 @@ h2 {
     color: #ff2727;
 }
 
-/* === Alertas === */
+/* === Alertas na Tela === */
 #alert-container {
     position: fixed;
     top: 20px;
@@ -275,7 +280,7 @@ h2 {
     animation: slideDown 0.5s ease-out;
 }
 
-/* Animação de descer do topo */
+/* Animação do Alerta Descendo */
 @keyframes slideDown {
     from { top: -50px; opacity: 0; }
     to { top: 20px; opacity: 1; }
